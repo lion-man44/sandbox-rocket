@@ -1,0 +1,36 @@
+[package]
+name = "sandbox-rocket"
+version = "0.1.0"
+authors = ["lion-man44 <lion44man@gmail.com>"]
+
+[lib]
+name = "mlib"
+path = "src/lib.rs"
+
+[profile.dev]
+opt-level = 0
+debug = true
+rpath = false
+lto = false
+debug-assertions = true
+codegen-units = 1
+panic = "unwind"
+
+[dependencies]
+# Rocket server deps
+rocket = "*"
+rocket_codegen = "*"
+rocket_contrib = { version = "*", features = ["tera_templates"] }
+
+# DB Deps
+diesel = { version = "*", features = ["postgres"] }
+diesel_codegen = { version = "*", features = ["postgres"] }
+dotenv = "*"
+r2d2 = "*"
+r2d2-diesel = "*"
+lazy_static = "*"
+
+# JSON deps
+serde = "*"
+serde_derive = "*"
+serde_json = "*"
