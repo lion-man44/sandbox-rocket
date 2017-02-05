@@ -68,11 +68,11 @@ fn render_asset(path: PathBuf) -> Option<NamedFile> {
 fn index(db: DB) -> Template {
     use mlib::schema::users::dsl::*;
     let query = users.first::<User>(db.conn()).expect("Error loading users");
-    //let serialized = serde_json::to_value(&query);
-    //println!("query = {:?}", &serialized);
+    let serialized = serde_json::to_string(&query).unwrap();
+    println!("query = {:?}", &serialized);
     //let mut data = HashMap::new();
     //data.insert("users", "sato");
-    Template::render("index", &query)
+    Template::render("index", &serialized)
     //Template::render("index", &serialized)
 }
 

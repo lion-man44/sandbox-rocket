@@ -11,8 +11,8 @@ pub struct User {
     pub name: String
 }
 
-//impl Serialize for User {
-//    fn serialize<S: Serializer>(&self, s: &mut S) -> Result<(), S::Error> {
-//        (&self.id, &self.name).serialize(s)
-//    }
-//}
+impl Serialize for User {
+    fn serialize<S: Serializer>(&self, s: S) -> Result<S::Ok, S::Error> {
+        (&self.id, &self.name).serialize(s)
+    }
+}
